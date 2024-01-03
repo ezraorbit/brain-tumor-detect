@@ -1,4 +1,3 @@
-altair @ file:///croot/altair_1687526041770/work
 anyio @ file:///tmp/build/80754af9/anyio_1644463572971/work/dist
 argon2-cffi @ file:///opt/conda/conda-bld/argon2-cffi_1645000214183/work
 argon2-cffi-bindings @ file:///tmp/build/80754af9/argon2-cffi-bindings_1644569679365/work
