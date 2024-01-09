@@ -8,6 +8,7 @@ import cv2
 import json
 import os
 from Preprocessing import crop_img
+import wget
 
 img_path = './output/output.jpg'
 
