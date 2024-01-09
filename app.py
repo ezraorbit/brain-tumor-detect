@@ -51,28 +51,19 @@ with st.sidebar:
         st.title("Brain Tumor Segmentation")
         st.subheader("Accurate detection of brain tumors present in scans is crucial for early diagnosis and effective treatment. This helps a user to easily detect the disease.")
 
-@st.cache_resource
-def download_data():
-    
-    path = './brain_tumor_model.h5'
-    
-    
-    if not os.path.exists(path):
-        decoder_url = 'wget -O ./brain_tumor_model.h5 https://www.dropbox.com/scl/fi/ost4oplhu4jeecdv27w87/brain_tumor_model.h5?rlkey=my1e0ivp7ch48l4z8hft84qy4&dl=0'
-        
-        with st.spinner('done!\nmodel weights were not found, downloading them...'):
-            os.system(decoder_url)
-    else:
-        print("Model is here.")
-	    
-download_data()
 
 @st.cache_resource
 def ld_model():
-    model=load_model('brain_tumor_model.h5')
-    return model
+    path = './brain_tumor_model.h5'
+    if not os.path.exists(path):
+        decoder_url = 'wget -O ./brain_tumor_model.h5 https://www.dropbox.com/scl/fi/ost4oplhu4jeecdv27w87/brain_tumor_model.h5?rlkey=my1e0ivp7ch48l4z8hft84qy4&dl=0'
+        with st.spinner('done!\nmodel weights were not found, downloading them...'):
+            os.system(decoder_url)
+    else:
+	    model=load_model('brain_tumor_model.h5')
+	    return model
 with st.spinner('Model is being loaded..'):
-    model=ld_model()
+	model=ld_model()
 
 st.write("""
          # Brain Tumor Segmentation
