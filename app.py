@@ -50,7 +50,7 @@ with st.sidebar:
         st.title("Brain Tumor Segmentation")
         st.subheader("Accurate detection of brain tumors present in scans is crucial for early diagnosis and effective treatment. This helps a user to easily detect the disease.")
 
-@st.cache
+@st.cache_resource
 def download_data():
     
     path = './brain_tumor_model.h5'
@@ -63,6 +63,8 @@ def download_data():
             os.system(decoder_url)
     else:
         print("Model is here.")
+	    
+download_data()
 
 @st.cache_resource
 def ld_model():
