@@ -56,7 +56,7 @@ with st.sidebar:
 def ld_model():
     path = './brain_tumor_model.h5'
     if not os.path.exists(path):
-        decoder_url = 'wget -O ./brain_tumor_model.h5 https://www.dropbox.com/scl/fi/ost4oplhu4jeecdv27w87/brain_tumor_model.h5?rlkey=my1e0ivp7ch48l4z8hft84qy4&dl=0'
+        decoder_url = 'wget -O brain_tumor_model.h5 https://www.dropbox.com/scl/fi/ost4oplhu4jeecdv27w87/brain_tumor_model.h5?rlkey=my1e0ivp7ch48l4z8hft84qy4&dl=0'
         with st.spinner('done!\nmodel weights were not found, downloading them...'):
             os.system(decoder_url)
     else:
