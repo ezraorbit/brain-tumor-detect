@@ -8,7 +8,7 @@ import cv2
 import json
 import os
 from Preprocessing import crop_img
-import wget
+from pathlib import Path
 
 img_path = './output/output.jpg'
 
@@ -54,14 +54,18 @@ with st.sidebar:
 
 @st.cache_resource
 def ld_model():
-    path = './brain_tumor_model.h5'
-    url = 'https://www.dropbox.com/scl/fi/ost4oplhu4jeecdv27w87/brain_tumor_model.h5?rlkey=my1e0ivp7ch48l4z8hft84qy4&dl=1'
-    if not os.path.exists(path):
-	    decoder_url = wget.download(url)
-	    print(decoder_url)
-    else:
-	    model=load_model('brain_tumor_model.h5')
-	    return model
+    save_dest = Path('model')
+    save_dest.mkdir(exist_ok=True)
+
+    f_checkpoint = Path('model/brain_tumor_model.h5')
+    if not f_checkpoint.exists():
+        with st.spinner("Downloading model.. this may take a while!"):
+            from GD_download import download_file_from_google_drive
+            download_file_from_google_drive(f_checkpoint)
+    
+    model=load_model(f_checkpoint)
+    return model
+
 with st.spinner('Model is being loaded..'):
 	model=ld_model()
 
