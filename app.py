@@ -55,9 +55,10 @@ with st.sidebar:
 @st.cache_resource
 def ld_model():
     path = './brain_tumor_model.h5'
+    url = 'https://www.dropbox.com/scl/fi/ost4oplhu4jeecdv27w87/brain_tumor_model.h5?rlkey=my1e0ivp7ch48l4z8hft84qy4&dl=1'
     if not os.path.exists(path):
-        decoder_url = 'wget https://www.dropbox.com/scl/fi/ost4oplhu4jeecdv27w87/brain_tumor_model.h5?rlkey=my1e0ivp7ch48l4z8hft84qy4&dl=1'
-        os.system(decoder_url)
+	    decoder_url = wget.download(url)
+	    print(decoder_url)
     else:
 	    model=load_model('brain_tumor_model.h5')
 	    return model
