@@ -2,7 +2,7 @@
 import requests
 
 def download_file_from_google_drive(destination):
-    URL = "https://www.dropbox.com/scl/fi/ost4oplhu4jeecdv27w87/brain_tumor_model.h5?rlkey=my1e0ivp7ch48l4z8hft84qy4&dl=1"
+    URL = "https://www.dropbox.com/scl/fi/s1j4hu5mt8tshfbz24of9/brain_tumor_model.h5?rlkey=h69fq77crf7qkxygiw8ci9bny&dl=1"
 
     session = requests.Session()
 
